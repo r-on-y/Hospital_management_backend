@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from patient.models import Patient
 
 # Create your models here.
 
@@ -32,6 +33,25 @@ class Doctor(models.Model):
     meet_link=models.CharField(max_length=100)
     def __str__(self):
         return self.user.first_name+" "+self.user.last_name
+
+Star_Rating=[
+    ('⭐','⭐'),
+    ('⭐⭐','⭐⭐'),
+    ('⭐⭐⭐','⭐⭐⭐'),
+    ('⭐⭐⭐⭐','⭐⭐⭐⭐'),
+    ('⭐⭐⭐⭐⭐','⭐⭐⭐⭐⭐'),
+]
+
+class Review(models.Model):
+    reviewer=models.ForeignKey(Patient,on_delete=models.CASCADE)
+    doctor=models.ForeignKey(Doctor,on_delete=models.CASCADE)
+    body=models.TextField()
+    created=models.DateTimeField(auto_now_add=True)
+    rating=models.CharField(choices=Star_Rating,max_length=10)
+
+    def __str__(self):
+        return f"Patient :{self.reviewer.user.first_name};Doctor:{self.doctor.user.first_name}"
+
 
 
 

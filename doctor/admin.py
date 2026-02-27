@@ -13,6 +13,6 @@ class DesignationModelAdmin(admin.ModelAdmin):
 admin.site.register(models.Designation,DesignationModelAdmin)
 admin.site.register(models.Specialization,SpecializationAdminModel)
 admin.site.register(models.AvailableTime)
-admin.site.register(models.Doctor)
+admin.site.register(models.Review)
 
 
