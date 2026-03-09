@@ -4,9 +4,8 @@ from . import views
 
 # Fixed spelling
 router = DefaultRouter()
-router.register('', views.ContactUsViewset)
+router.register('', views.ServiceViewset)
 
 urlpatterns = [
-    # Fixed the period at the end
     path('', include(router.urls)),
 ]
